@@ -1,0 +1,145 @@
+/* src/index.css */
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --primary-color: #39FF14; /* Neon Green */
+  --primary-glow: rgba(57, 255, 20, 0.5); /* The glow color */
+  --background-color: #000000;
+  --text-color: #f0f0f0; /* Off-white for readability */
+}
+
+/* Hide the custom cursor by default */
+body, a, button {
+  cursor: none;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: 'Consolas', 'Menlo', 'monospace';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* --- GLOBAL TEXT STYLES --- */
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--primary-color);
+  text-shadow:
+    0 0 5px var(--primary-color),
+    0 0 10px var(--primary-color),
+    0 0 20px var(--primary-glow),
+    0 0 30px var(--primary-glow);
+}
+
+/* Reusable class for any text that needs the intense glow */
+.text-glow {
+  color: var(--primary-color);
+  text-shadow:
+    0 0 5px var(--primary-color),
+    0 0 10px var(--primary-color),
+    0 0 20px var(--primary-glow),
+    0 0 30px var(--primary-glow);
+}
+
+a, .btn-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 5px var(--primary-glow);
+}
+
+a:hover, .btn-link:hover {
+  color: white;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff;
+}
+
+/* --- BUTTON STYLES --- */
+
+/* Enhanced "energy fill" button */
+.btn-outline-custom {
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  background-color: transparent;
+  transition: color 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+.btn-outline-custom::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary-color);
+  transition: left 0.4s ease-in-out;
+  z-index: -1;
+}
+.btn-outline-custom:hover {
+  color: #000;
+}
+.btn-outline-custom:hover::before {
+  left: 0;
+}
+
+/* --- HOVER & MISC STYLES --- */
+
+.hoverable {
+  transition: transform 0.2s ease-in-out;
+}
+.hoverable:hover {
+  transform: scale(1.05); /* A more subtle hover scale */
+}
+
+section#contact .form-label {
+  color: var(--primary-color);
+  text-shadow:
+    0 0 5px var(--primary-color), 0 0 10px var(--primary-color),
+    0 0 20px var(--primary-glow), 0 0 30px var(--primary-glow);
+}
+
+footer p {
+  color: var(--primary-color);
+  text-shadow:
+    0 0 5px var(--primary-color), 0 0 10px var(--primary-color),
+    0 0 20px var(--primary-glow), 0 0 30px var(--primary-glow);
+  font-size: 0.9rem;
+}
+
+/* --- RESPONSIVE STYLES FOR MOBILE --- */
+@media (max-width: 768px) {
+  /* Reduce font sizes for main headings */
+  .display-1, .display-3 {
+    font-size: 2.5rem; /* Further reduced for the new Hero */
+    word-wrap: break-word;
+  }
+  .display-4 {
+    font-size: 2.2rem;
+  }
+  
+  /* Disable custom cursor on touch devices */
+  .cursor {
+    display: none;
+  }
+  body, a, button {
+    cursor: default;
+  }
+
+  /* Make Hero section a bit shorter on mobile */
+  .vh-100 {
+    min-height: 90vh;
+  }
+
+  /* Reduce glow intensity on small screens */
+  h1, h2, h3, h4, h5, h6, .text-glow, section#contact .form-label, footer p {
+    text-shadow:
+      0 0 3px var(--primary-color),
+      0 0 8px var(--primary-color),
+      0 0 15px var(--primary-glow);
+  }
+}
